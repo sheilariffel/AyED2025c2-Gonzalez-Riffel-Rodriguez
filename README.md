@@ -9,3 +9,6 @@ Repositorio inicial para las clases de práctica de Algoritmos y Estructuras de 
 
 ## Cuatrimestre de cursado:
     2do cuatrimestre del 2025
+
+
+## Problema 1
