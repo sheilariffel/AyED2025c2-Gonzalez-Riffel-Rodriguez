@@ -3,25 +3,39 @@
 from modules.LDE import ListaDobleEnlazada  # Importa la clase ListaDobleEnlazada
 
 class DequeEmptyError(Exception):
-    pass  # Define una excepción personalizada para cuando el mazo está vacío
+    """Excepción personalizada para cuando el mazo está vacío"""
+    pass
+
 
 class Mazo:
     def __init__(self):
-        self._cartas = ListaDobleEnlazada() #mazo vacío
+        self._cartas = ListaDobleEnlazada()  # mazo vacío
 
     def esta_vacio(self):
-        return self._cartas.esta_vacia() #devuelve True si el mazo está vacío
+        return self._cartas.esta_vacia()
 
-    def agregar_carta(self, carta):
-        self._cartas.agregar_al_final(carta) #agrega una carta al final del mazo
+    def poner_carta_arriba(self, carta):
+        """Agrega una carta arriba del mazo (al inicio)."""
+        self._cartas.agregar_al_inicio(carta)
 
-    def sacar_carta(self):
+    def poner_carta_abajo(self, carta):
+        """Agrega una carta abajo del mazo (al final)."""
+        self._cartas.agregar_al_final(carta)
+
+    def sacar_carta_arriba(self, mostrar=False):
+        """Saca la carta de arriba del mazo (inicio)."""
         if self.esta_vacio():
             raise DequeEmptyError("El mazo está vacío")
-        return self._cartas.extraer(0) #saca y devuelve la primera carta del mazo
+        return self._cartas.extraer(0)
 
     def __len__(self):
-        return len(self._cartas) #devuelve la cantidad de cartas en el mazo
+        """Permite usar len(mazo)."""
+        return len(self._cartas)
 
     def __iter__(self):
-        return iter(self._cartas) #permite iterar sobre las cartas del mazo
+        """Permite iterar sobre las cartas del mazo."""
+        return iter(self._cartas)
+
+    def __str__(self):
+        """Representación del mazo al imprimirlo."""
+        return " ".join(str(carta) for carta in self._cartas)
