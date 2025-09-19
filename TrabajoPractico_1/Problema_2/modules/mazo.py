@@ -1,6 +1,6 @@
 # mazo.py
 
-from proyecto_1.modules.listaDoblemente import ListaDobleEnlazada  # Importa la clase ListaDobleEnlazada
+from modules.listaDoblemente import ListaDobleEnlazada  # Importa la clase ListaDobleEnlazada
 
 class DequeEmptyError(Exception):
     """Excepción personalizada para cuando el mazo está vacío"""
