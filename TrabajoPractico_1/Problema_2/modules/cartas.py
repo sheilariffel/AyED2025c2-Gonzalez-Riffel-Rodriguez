@@ -1,6 +1,6 @@
-import random                         # Importa el módulo 'random' para poder barajar (shuffle) las cartas.
+import random                         
 
-class DequeEmptyError(Exception):     # Define una excepción propia para "deque (cola doble) vacío".
+class DequeEmptyError(Exception):     
     pass                             
 
 # Clase Carta
