@@ -1,0 +1,48 @@
+# módulo para organizar funciones o clases utilizadas en nuestro proyecto
+# Crear tantos módulos como sea necesario para organizar el código
+
+#b) Ordenamiento quicksort: Se selecciona un pivote que puede ser el primer número o el último o uno aleatorio. 
+# La lista que queda se reorganizan 1 a 1 hasta encontrar la ubicación exacta de ese pivote y se realiza continuamente.
+
+def particion(lista, bajo, alto):
+    """
+    Función auxiliar para particionar la lista.
+    Elige el último elemento como pivote, coloca todos los elementos menores
+    que el pivote a la izquierda, y los mayores a la derecha.
+    """
+    pivote = lista[alto]
+    i = (bajo - 1)  # Índice del elemento más pequeño
+
+    for j in range(bajo, alto):
+        # Si el elemento actual es menor o igual que el pivote
+        if lista[j] <= pivote:
+            i = i + 1
+            # Intercambia lista[i] y lista[j]
+            lista[i], lista[j] = lista[j], lista[i]
+
+    # Intercambia lista[i+1] y el pivote (lista[alto])
+    lista[i + 1], lista[alto] = lista[alto], lista[i + 1]
+    return (i + 1)
+
+def quicksort(lista, bajo, alto):
+    """
+    Función principal de quicksort que ordena la lista de forma recursiva.
+    """
+    if bajo < alto:
+        # p_index es el índice de partición, lista[p_index] ya está en su lugar
+        p_index = particion(lista, bajo, alto)
+
+        # Ordena los elementos antes de la partición
+        quicksort(lista, bajo, p_index - 1)
+
+        # Ordena los elementos después de la partición
+        quicksort(lista, p_index + 1, alto)
+
+if __name__=="__main__":
+    # Ejemplo de uso
+    numeros = [10, 7, 8, 9, 1, 5]
+    n = len(numeros)
+    quicksort(numeros, 0, n - 1) 
+
+    print("Lista ordenada usando quicksort:")
+    print(numeros)
