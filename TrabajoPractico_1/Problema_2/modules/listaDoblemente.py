@@ -4,7 +4,7 @@
 # modulos.py
 
 class Nodo:
-    __inicio__ = ("dato", "siguiente", "anterior")
+    inicio = ("dato", "siguiente", "anterior")
 
     def __init__(self, dato, siguiente=None, anterior=None):
         self.dato = dato
@@ -13,7 +13,7 @@ class Nodo:
 
 
 class ListaDobleEnlazada:
-    __inicio__ = ("cabeza", "cola", "tamanio")
+    inicio = ("cabeza", "cola", "tamanio")
 
     def __init__(self):
         self.cabeza = None

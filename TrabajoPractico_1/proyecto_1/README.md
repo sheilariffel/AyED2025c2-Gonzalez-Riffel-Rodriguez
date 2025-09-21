@@ -8,10 +8,7 @@ Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. 
 ## 🏗Arquitectura General
 
 Explica brevemente cómo está organizado el código (funciones y/o clases)
-
-Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
-
-El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
+Las gráficas se están en el informe que se encuentra en ...
 
 ---
 ## 📑Dependencias
@@ -36,9 +33,9 @@ El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 ---
 ## 🙎‍♀️🙎‍♂️Autores
 
-- Apellido y Nombre del primer integrante
-- Apellido y Nombre del primer integrante
-
+- Riffel Sheila
+- Gonzalez Maria Jimena
+- Rodriguez Maite
 ---
 
 > **Consejo**: Mantén el README **actualizado** conforme evoluciona el proyecto, y elimina (o añade) secciones según necesites. Esta plantilla es sólo un punto de partida general.
