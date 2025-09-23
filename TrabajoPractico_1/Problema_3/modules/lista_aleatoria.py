@@ -1,6 +1,10 @@
+"""
+Como debo corroborar que funcionen correctamente los ordenamientos con listas de números aleatorios 
+de cinco dígitos generados aleatoriamente (mínimamente de 500 números en adelante), genero una función que me lo haga
+"""
 import random
 
-def lista_aleatoria (n=500):
+def lista_aleatoria (n=600):
     lista = []
 
     for i in range (n): #genera el número aleatorio

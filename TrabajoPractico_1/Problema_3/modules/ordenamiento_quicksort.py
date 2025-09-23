@@ -9,6 +9,7 @@ import sys
 import random
 sys.setrecursionlimit(2000)
 
+"""
 def particion(lista, bajo, alto):# Ejemplo de una función de partición con pivote aleatorio
     # Elegir un pivote aleatorio
     pivote_idx = random.randint(bajo, alto)
@@ -24,11 +25,12 @@ def particion(lista, bajo, alto):# Ejemplo de una función de partición con piv
             
     lista[i + 1], lista[alto] = lista[alto], lista[i + 1]
     return i + 1
-
+"""
+"""
 def quicksort(lista,bajo=0, alto=0):
-    """
+
     Función principal de quicksort que ordena la lista de forma recursiva.
-    """
+
     if alto==0: 
         alto=len(lista)-1
 
@@ -42,17 +44,78 @@ def quicksort(lista,bajo=0, alto=0):
 
         # Ordena los elementos después de la partición
         quicksort(lista, p_index + 1, alto)
-    
+"""
+#---------------------------------------------------------------------------------------------------
+#tomado del libro 
+def particion(Lista,primero,ultimo):
+   valorPivote = Lista[primero]
+
+   marcaIzq = primero+1
+   marcaDer = ultimo
+
+   hecho = False
+   while not hecho:
+
+       while marcaIzq <= marcaDer and Lista[marcaIzq] <= valorPivote:
+           marcaIzq = marcaIzq + 1
+
+       while Lista[marcaDer] >= valorPivote and marcaDer >= marcaIzq:
+           marcaDer = marcaDer -1
+
+       if marcaDer < marcaIzq:
+           hecho = True
+       else:
+           temp = Lista[marcaIzq]
+           Lista[marcaIzq] = Lista[marcaDer]
+           Lista[marcaDer] = temp
+
+   temp = Lista[primero]
+   Lista[primero] = Lista[marcaDer]
+   Lista[marcaDer] = temp
+   return marcaDer
+
+def ordenamientoRapidoAuxiliar(Lista,primero,ultimo):
+   if primero<ultimo:
+
+       puntoDivision = particion(Lista,primero,ultimo)
+
+       ordenamientoRapidoAuxiliar(Lista,primero,puntoDivision-1)
+       ordenamientoRapidoAuxiliar(Lista,puntoDivision+1,ultimo)
+
+def quicksort(Lista):
+   ordenamientoRapidoAuxiliar(Lista,0,len(Lista)-1)
+   return Lista
+
+from modules.lista_aleatoria import lista_aleatoria
 
 if __name__=="__main__":
-    # Ejemplo de uso
-    numeros = [10, 7, 8, 9, 1, 5]
-    print(numeros)
-    n = len(numeros)
-    quicksort(numeros, 0, n - 1) 
+    
+    Lista = [54,26,93,17,77,31,44,55,20]
+    quicksort(Lista)
+    print(Lista)
 
-    print("Lista ordenada usando quicksort:")
-    print(numeros)
+    
+    lista1 = lista_aleatoria()
+    lista_quickso = quicksort(lista1.copy()) #metodo copy
+    #print(lista_burbuja)
+
+    lista_sort = sorted(lista1.copy())  #como tengo demasiados numeros, no puedo comparar 1 por uno si realmente estan ordenados
+    #por lo tanto lo que hago es llamar a la funcion sortes que tambien ordena los elementos, y los comparo con mi metodo
+    #si son iguales arroja un comentario de que son iguales y si no lo son, me informa que no son iguales
+    if lista_quickso == lista_sort:
+        print("son iguales")
+    else: 
+        print("no son iguales")
+
+
+    # Ejemplo de uso
+    #numeros = [10, 7, 8, 9, 1, 5]
+    #print(numeros)
+    #n = len(numeros)
+    #quicksort(numeros, 0, n - 1) 
+
+    #print("Lista ordenada usando quicksort:")
+    #print(numeros)
 """
 def particion(lista, bajo, alto):
     

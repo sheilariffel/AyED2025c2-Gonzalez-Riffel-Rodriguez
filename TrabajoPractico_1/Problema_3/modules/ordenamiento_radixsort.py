@@ -3,7 +3,7 @@
 # empezar a verificar primero las unidades de todos los números y cada número que este lo 
 # vas sumando en las cantidades que van del 0 al 9,    
 
-def counting_sort(lista, exp):
+def counting_sort(lista, exp): #ordenamiento por cuentas
     """
     Función de ordenamiento por conteo para ordenar una lista según
     el dígito representado por 'exp' (ej. 1, 10, 100, ...).
