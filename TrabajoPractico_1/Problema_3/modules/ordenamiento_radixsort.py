@@ -28,7 +28,7 @@ def counting_sort(lista, exp):
         salida[conteo[indice] - 1] = lista[i]
         conteo[indice] -= 1
         i -= 1
-
+        
     # Copiar el array de salida a la lista original
     for i in range(n):
         lista[i] = salida[i]

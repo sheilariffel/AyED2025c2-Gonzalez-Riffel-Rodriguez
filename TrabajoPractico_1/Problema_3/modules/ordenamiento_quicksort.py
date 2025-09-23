@@ -5,26 +5,25 @@
 # aleatorio. 
 # La lista que queda se reorganizan 1 a 1 hasta encontrar la ubicación exacta de ese pivote y se 
 # realiza continuamente.
+import sys    
+import random
+sys.setrecursionlimit(2000)
 
-def particion(lista, bajo, alto):
-    """
-    Función auxiliar para particionar la lista.
-    Elige el último elemento como pivote, coloca todos los elementos menores
-    que el pivote a la izquierda, y los mayores a la derecha.
-    """
+def particion(lista, bajo, alto):# Ejemplo de una función de partición con pivote aleatorio
+    # Elegir un pivote aleatorio
+    pivote_idx = random.randint(bajo, alto)
+    lista[pivote_idx], lista[alto] = lista[alto], lista[pivote_idx]
+    
     pivote = lista[alto]
-    i = (bajo - 1)  # Índice del elemento más pequeño   i es el puntero de la izquierda
-
-    for j in range(bajo, alto): #j es el puntero de la derecha
-        # Si el elemento actual es menor o igual que el pivote
+    i = bajo - 1
+    
+    for j in range(bajo, alto):
         if lista[j] <= pivote:
-            i = i + 1
-            # Intercambia lista[i] y lista[j]
+            i += 1
             lista[i], lista[j] = lista[j], lista[i]
-
-    # Intercambia lista[i+1] y el pivote (lista[alto])
+            
     lista[i + 1], lista[alto] = lista[alto], lista[i + 1]
-    return (i + 1) #devuelve la posición del pivote, y a partir de aca ordeno los que estan antes y después
+    return i + 1
 
 def quicksort(lista,bajo=0, alto=0):
     """
@@ -54,3 +53,24 @@ if __name__=="__main__":
 
     print("Lista ordenada usando quicksort:")
     print(numeros)
+"""
+def particion(lista, bajo, alto):
+    
+    Función auxiliar para particionar la lista.
+    Elige el último elemento como pivote, coloca todos los elementos menores
+    que el pivote a la izquierda, y los mayores a la derecha.
+    
+    pivote = lista[alto]
+    i = (bajo - 1)  # Índice del elemento más pequeño   i es el puntero de la izquierda
+
+    for j in range(bajo, alto): #j es el puntero de la derecha
+        # Si el elemento actual es menor o igual que el pivote
+        if lista[j] <= pivote:
+            i = i + 1
+            # Intercambia lista[i] y lista[j]
+            lista[i], lista[j] = lista[j], lista[i]
+
+    # Intercambia lista[i+1] y el pivote (lista[alto])
+    lista[i + 1], lista[alto] = lista[alto], lista[i + 1]
+    return (i + 1) #devuelve la posición del pivote, y a partir de aca ordeno los que estan antes y después
+"""

@@ -2,15 +2,7 @@
 # Crear tantos módulos como sea necesario para organizar el código
 
 def ordenamiento_burbuja(lista):
-    """
-    Ordena una lista de números usando el algoritmo de ordenamiento burbuja.
-
-    Args:
-        lista (list): La lista de números a ordenar.
-
-    Returns:
-        list: La lista ordenada.
-    """
+   
     n = len(lista)
 
     # Recorremos todos los elementos de la lista
@@ -32,3 +24,13 @@ if __name__== "__main__":
 
     lista_ordenada = ordenamiento_burbuja(numeros)
     print(f"Lista ordenada: {lista_ordenada}")
+
+"""
+    Ordena una lista de números usando el algoritmo de ordenamiento burbuja.
+
+    Args:
+        lista (list): La lista de números a ordenar.
+
+    Returns:
+        list: La lista ordenada.
+"""

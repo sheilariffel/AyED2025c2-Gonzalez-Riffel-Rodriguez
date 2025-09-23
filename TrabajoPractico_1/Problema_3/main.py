@@ -7,7 +7,6 @@ from modules.medicion_de_tiempo import medicion_de_tiempo
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 lista_1 = lista_aleatoria()
 ordenamiento_burbuja(lista_1)
 print(lista_1)
@@ -26,7 +25,7 @@ print()
 lista_11 = medicion_de_tiempo(ordenamiento_burbuja)
 print(lista_11)
 
-tamanios = np.arange(10, 500, 50)
+tamanios = np.arange(10, 1050, 50) #no puedo usar mayor a 500 porque se rompe el ordenamiento
 lista_111 = medicion_de_tiempo(ordenamiento_burbuja)
 lista_222 = medicion_de_tiempo(quicksort)
 lista_333 = medicion_de_tiempo(radix_sort)
