@@ -1,6 +1,6 @@
 # módulo para organizar funciones o clases utilizadas en nuestro proyecto
 # Crear tantos módulos como sea necesario para organizar el código
-
+from modules.lista_aleatoria import lista_aleatoria
 def ordenamiento_burbuja(lista):
    
     n = len(lista)
@@ -17,15 +17,27 @@ def ordenamiento_burbuja(lista):
 
     return lista
 
+#ejemplo realizado para verificar que realmente se comparen los valores y sean iguales. Usando la funcion sorter
 if __name__== "__main__":
+    lista1 = lista_aleatoria()
+    lista_burbuja = ordenamiento_burbuja(lista1.copy()) #metodo copy
+    #print(lista_burbuja)
+
+    lista_sort = sorted(lista1.copy())
+    if lista_burbuja == lista_sort:
+        print("son iguales")
+    else: 
+        print("no son iguales")
+
+
     # Ejemplo de uso
-    numeros = [64, 34, 25, 12, 22, 11, 90]
-    print(f"Lista original: {numeros}")
+    #numeros = [64, 34, 25, 12, 22, 11, 90]
+    #print(f"Lista original: {numeros}")
 
-    lista_ordenada = ordenamiento_burbuja(numeros)
-    print(f"Lista ordenada: {lista_ordenada}")
+    #lista_ordenada = ordenamiento_burbuja(numeros)
+    #print(f"Lista ordenada: {lista_ordenada}")
 
-"""
+    """
     Ordena una lista de números usando el algoritmo de ordenamiento burbuja.
 
     Args:
@@ -33,4 +45,4 @@ if __name__== "__main__":
 
     Returns:
         list: La lista ordenada.
-"""
+    """

@@ -29,11 +29,13 @@ tamanios = np.arange(10, 1050, 50) #no puedo usar mayor a 500 porque se rompe el
 lista_111 = medicion_de_tiempo(ordenamiento_burbuja)
 lista_222 = medicion_de_tiempo(quicksort)
 lista_333 = medicion_de_tiempo(radix_sort)
+lista_444 = medicion_de_tiempo(sorted)
 
  # Gráfica
 plt.plot(tamanios,lista_111, label="burbuja")
 plt.plot(tamanios,lista_222, label="quicksort")
 plt.plot(tamanios,lista_333, label="residuos")
+plt.plot(tamanios,lista_444, label="sorted")
 plt.xlabel("Tamaño de la lista (n)")
 plt.ylabel("Tiempo (segundos)")
 plt.title("Tiempo real de ejecución de operaciones")
