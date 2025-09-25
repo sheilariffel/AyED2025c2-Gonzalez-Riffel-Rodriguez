@@ -1,5 +1,3 @@
-# 📝Documentación del proyecto
-
 Informe - Problema 2 "Juega de Guerra"
 
 Descripción del problema
