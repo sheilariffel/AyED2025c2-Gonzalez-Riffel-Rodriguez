@@ -40,11 +40,11 @@ class TestMazo(unittest.TestCase):
         self.mazo.poner_carta_abajo(carta1)
         self.mazo.poner_carta_abajo(carta2)
 
-        # Sacamos la carta superior (que debería ser la primera que pusimos en la parte de arriba)
+        # Sacamos la carta de arriba (que debería ser la primera que pusimos en la parte de arriba)
         carta_control = self.mazo.sacar_carta_arriba()
         self.assertIs(carta1, carta_control)  # La carta que sacamos debe ser carta1, ya que fue la primera en ponerse abajo
 
-        # Sacamos la siguiente carta, que debería ser la carta que pusimos al final (carta2)
+        # Sacamos la siguiente carta, que debería ser la ultima carta (carta2)
         carta_control = self.mazo.sacar_carta_arriba()
         self.assertIs(carta2, carta_control)  # La siguiente carta debe ser carta2
         
