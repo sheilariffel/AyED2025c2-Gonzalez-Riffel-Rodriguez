@@ -1,9 +1,9 @@
 """
 ------------------------------------------ORDENAMIENTO BURBUJA-------------------------------------------------------
 Funciona como si fueran burbujas en el agua: Vas comparando dos elementos vecinos de la lista. Si el de 
-la izquierda es más grande que el de la derecha, los intercambiás. Después seguís comparando los siguientes pares. Al 
-final de una pasada, el número más grande termina en el último lugar (como una burbuja que sube). Entonces, en la
-siguiente pasada ya no hace falta mirar ese último.
+la izquierda es más grande que el de la derecha, los intercambiás. Después seguís comparando los 
+siguientes pares. Al final de una pasada, el número más grande termina en el último lugar 
+(como una burbuja que sube). Entonces, en la siguiente pasada ya no hace falta mirar ese último.
 
 # --- Versión sin considerar los casos cuando la lista ya esta ordenada desde el principio d---
 def ordenamiento_burbuja(Lista):
@@ -18,6 +18,16 @@ def ordenamiento_burbuja(Lista):
                 Lista[i] = Lista[i+1]
                 Lista[i+1] = temp
     return Lista
+
+    
+Función: ordenamiento_burbuja
+Ordena una lista de números usando el algoritmo de ordenamiento burbuja.
+
+Args:
+    lista (list): La lista de números a ordenar.
+Returns:
+    list: La lista ordenada en orden ascendente.
+   
 """
 # Importa la función que genera lista aletoria para corroborar el funcionamiento de este ordenamiento
 from modules.lista_aleatoria import lista_aleatoria 
@@ -50,7 +60,8 @@ def ordenamiento_burbuja(Lista):
 
 
 """
-Verificamos si el algoritmo de ordenamiento burbuja devuelve la lista ordenada. Usamos dos métodos de prueba:
+-------------------------Verificación------------------------------------------------------------- 
+Si el algoritmo de ordenamiento burbuja devuelve la lista ordenada. Usamos dos métodos de prueba:
 1 - Generar una lista grande con lista_aleatoria(), ordenarla con nuestro algoritmo
     (ordenamiento_burbuja) y también con la función sorted() de Python.
     Luego comparamos ambas listas: 
@@ -80,12 +91,16 @@ if __name__== "__main__": #Me va a permitir que el ejemplo solo se ejecute en es
     numeros = [64, 34, 25, 12, 22, 11, 90]
     nume = [1,2,3,4,5,6]
 
+    #Muestro las listas previas a ser ordenadas
     print()
     print(f"Lista 1 original: {numeros}")
     print("Lista 2 ordenada desde el inicio: ", nume)
 
-    lista_ordenada = ordenamiento_burbuja(numeros) #Aplico ordenamiento_burbuja()
+    #Aplico ordenamiento_burbuja()
+    lista_ordenada = ordenamiento_burbuja(numeros) 
     lista_ordenada1 = ordenamiento_burbuja(nume)
+
+    #Muestro las listas ordenadas
     print(f"Lista 1 ordenada: {lista_ordenada}")
     print("Lista 2 ordenada: ",lista_ordenada1)
  
