@@ -4,7 +4,7 @@ aleatorios de cinco dígitos, y luego en el main, realizar la llamada de los ord
 """
 import random # Importa el módulo random, que permite generar números aleatorios.
 
-def lista_aleatoria (n=750): # Define una función que genera una lista de 600 números aleatorios. 
+def lista_aleatoria (n=750): # Define una función que genera una lista de 750 números aleatorios. 
     lista = [] # Se crea una lista vacía donde se guardarán los números generados.
 
     for i in range (n): # Repite el bucle n veces (en este caso, 750 por defecto).
