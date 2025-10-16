@@ -11,7 +11,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Tamaños de listas que se evaluarán: desde 10 hasta 1000 en saltos de 50
-tamanios = np.arange(10, 1050, 50) 
+# tamanios = np.arange(10, 1050, 50) 
+# Tamaños de listas que se evaluarán: desde 10 hasta 1000 en saltos de 5 (sugerencia de la cátedra)
+tamanios = np.arange(1, 1001, 5)
 
 # Medición de tiempos para cada algoritmo de ordenamiento
 # lista_burbuja = medicion_de_tiempo(ordenamiento_burbuja)
