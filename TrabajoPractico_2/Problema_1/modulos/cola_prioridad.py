@@ -1,3 +1,5 @@
+#Agregado por mi, para poder realizar una cola de prioridad. Que permite insetar elmentos con prioridad asociada
+
 import heapq
 
 class PriorityQueue:
@@ -26,6 +28,8 @@ class PriorityQueue:
 #...
 # Supongamos que internamente hay una instancia global (o contexto) de la cola
 _cola = PriorityQueue()
+
+#Luego, funciones que probablemente los tests esperan:
 
 def reiniciar():
     """Reinicia la estructura (vaciar) para los tests."""
@@ -60,6 +64,8 @@ def pacientes_pendientes():
     return len(_cola)
 #....
 
+#Me pidieron definir una clase paciente _> hay una en el modulo
+
 class Paciente:
     def __init__(self, nombre, riesgo):
         self.nombre = nombre
@@ -72,6 +78,7 @@ class Paciente:
 # Ejemplo de uso
 cola = PriorityQueue()
 
+#simulamos el flujo 
 cola.push(3, Paciente("Juan", 3))   # bajo
 cola.push(1, Paciente("Ana", 1))    # crítico
 cola.push(2, Paciente("Luis", 2))   # moderado
