@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+#ESTO ES DE LA CATEDRA
+
 from random import randint, choices
 
 nombres = ['Leandro', 'Mariela', 'Gastón', 'Andrea', 'Antonio', 'Estela', 'Jorge', 'Agustina']

@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
+
+#ESTO Y EL MODULO PACIENTE ES DE TP2
 """
 Sala de emergencias
 """
 
+"""
 import time
 import datetime
 import modulos.paciente as pac
@@ -49,3 +52,4 @@ for i in range(n):
     print('-*-'*15)
     
     time.sleep(1)
+"""
