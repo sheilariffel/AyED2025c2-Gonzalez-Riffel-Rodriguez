@@ -11,8 +11,8 @@ El proyecto implementa una Lista Doble Enlazada (LDE) en Python, organizada en u
 - Inserción: agregar_al_inicio(), agregar_al_final(), insertar()
 - Extracción: extraer()
 - Manipulación: copiar(), invertir(), concatenar()
-- Sobrecarga de operadores: __len__(), __add__()
-- Iteración: __iter__()
+- Sobrecarga de operadores: ´__len__()´, ´__add__()´
+- Iteración: ´__iter__()´
 
 Todos los métodos soportan listas vacías, índices negativos y mantienen la integridad de los enlaces entre nodos.
 
