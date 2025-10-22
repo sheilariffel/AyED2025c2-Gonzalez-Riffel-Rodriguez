@@ -61,66 +61,56 @@ class ListaDobleEnlazada:
     def insertar(self, item, posicion=None):
         if posicion is None:
             self.agregar_al_final(item)
-            return
-
-        if self.tamanio == 0 and posicion != 0:
-            raise Exception("Posición inválida")
-
-        if posicion < 0 or posicion >= self.tamanio:
-            if not (self.tamanio == 0 and posicion == 0):
+        else:
+            
+            if not ((0 <= posicion < self.tamanio) or (self.tamanio == 0 and posicion == 0)):
                 raise Exception("Posición inválida")
 
-        if posicion == 0:
-            self.agregar_al_inicio(item)
-            return
-
-        actual = self._nodo_en_posicion(posicion)
-        nuevo = Nodo(item, siguiente=actual, anterior=actual.anterior)
-        actual.anterior.siguiente = nuevo
-        actual.anterior = nuevo
-        self.tamanio += 1
+            if posicion == 0:
+                self.agregar_al_inicio(item)
+            else:
+                actual = self._nodo_en_posicion(posicion)
+                nuevo = Nodo(item, siguiente=actual, anterior=actual.anterior)
+                actual.anterior.siguiente = nuevo
+                actual.anterior = nuevo
+                self.tamanio += 1
 
     def extraer(self, posicion=None):
         if self.esta_vacia():
             raise Exception("Lista vacía")
 
-        if posicion is None or posicion == -1:
-            nodo = self.cola
-            dato = nodo.dato
-            self.cola = nodo.anterior
-            if self.cola is not None:
-                self.cola.siguiente = None
-            else:
-                self.cabeza = None
-            self.tamanio -= 1
-            return dato
-
+        if posicion is None: 
+            posicion = self.tamanio - 1
+           
+        if posicion < 0:
+            posicion = self.tamanio + posicion
+        
         if posicion < 0 or posicion >= self.tamanio:
-            raise Exception("Posición inválida")
+            raise Exception("Posición fuera de rango")
 
+        nodo = None
         if posicion == 0:
-            nodo = self.cabeza
-            dato = nodo.dato
-            self.cabeza = nodo.siguiente
-            if self.cabeza is not None:
-                self.cabeza.anterior = None
-            else:
-                self.cola = None
-            self.tamanio -= 1
-            return dato
+              nodo = self.cabeza
+        if posicion == self.tamanio - 1:
+            nodo = self.cola
+        if 0 < posicion < self.tamanio - 1:
+            nodo = self._nodo_en_posicion(posicion)
 
-        actual = self._nodo_en_posicion(posicion)
-        dato = actual.dato
-        ant = actual.anterior
-        sig = actual.siguiente
-        ant.siguiente = sig
-        if sig is not None:
-            sig.anterior = ant
+        dato = nodo.dato
+
+        if nodo.anterior:
+            nodo.anterior.siguiente = nodo.siguiente
         else:
-            self.cola = ant
+            self.cabeza = nodo.siguiente
+
+        if nodo.siguiente:
+            nodo.siguiente.anterior = nodo.anterior
+        else:
+            self.cola = nodo.anterior
+
         self.tamanio -= 1
         return dato
-
+    
     def copiar(self):
         copia = ListaDobleEnlazada()
         actual = self.cabeza
