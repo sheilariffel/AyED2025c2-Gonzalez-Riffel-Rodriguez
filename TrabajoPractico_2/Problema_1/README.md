@@ -43,3 +43,14 @@ El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 ---
 
 > **Consejo**: Mantén el README **actualizado** conforme evoluciona el proyecto, y elimina (o añade) secciones según necesites. Esta plantilla es sólo un punto de partida general.
+
+---
+#Consideraciones que estoy teniendo del trabajo
+
+Probar la simulación de la sala de emergencias
+Implementar un montículo de mínimos (y probarlo)
+Implementar una Cola de Prioridad (con un montículo de mínimos y probarla)
+Integrar sala de emergencias con la Cola de Prioridad
+Ajustar para cumplir la consigna de igual orden de criticidad
+
+

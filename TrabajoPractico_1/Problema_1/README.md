@@ -1,40 +1,27 @@
-# 🐍Nombre del proyecto (darle un nombre significativo) 
+# 🐍Implementación del TAD Lista doblemente enlazada
 
-Breve descripción del proyecto:
+Este proyecto implementa una Lista Doble Enlazada (LDE) en Python. Permite agregar, insertar y extraer elementos desde cualquier posición, invertir la lista, copiarla, concatenarla con otra lista y recorrerla de manera iterativa.
 
-Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite [describir funcionalidades principales].
-
----
 ## 🏗Arquitectura General
 
-Explica brevemente cómo está organizado el código (funciones y/o clases)
-Las gráficas se están en el informe que se encuentra en ...
+El proyecto implementa una Lista Doble Enlazada (LDE) en Python, organizada en un módulo principal:
 
----
-## 📑Dependencias
+- Clase Nodo: representa un nodo de la lista, con los atributos dato, siguiente y anterior.
+- Clase ListaDobleEnlazada: gestiona la lista y sus operaciones, incluyendo:
+- Inserción: agregar_al_inicio(), agregar_al_final(), insertar()
+- Extracción: extraer()
+- Manipulación: copiar(), invertir(), concatenar()
+- Sobrecarga de operadores: ´__len__()´, ´__add__()´
+- Iteración: ´__iter__()´
 
-1. **Python 3.x**
-2. **matplotlib** (`pip install matplotlib`)
-3. listar dependencias principales
-4. Dependencias listadas en requierements.txt
+Todos los métodos soportan listas vacías, índices negativos y mantienen la integridad de los enlaces entre nodos.
 
----
-## 🚀Cómo Ejecutar el Proyecto
-1. **Clonar o descargar** el repositorio.
+Gráficas y visualizaciones se encuentran en el informe ubicado en la carpeta docs con nombre "TP1_P1_AyED_GonzalezRiffelRodriguez"
 
-2. **Crear y activar** un entorno virtual.
+## 🙎‍♀️🙎‍♀️🙎‍♀️ Autoras
 
-3. **Instalar las dependencias**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-   El archivo `requirements.txt` se encuentran en la carpeta [deps](./deps) del proyecto.
-
----
-## 🙎‍♀️🙎‍♂️Autores
-
-- Riffel Sheila
 - Gonzalez Maria Jimena
+- Riffel Sheila
 - Rodriguez Maite
 ---
 

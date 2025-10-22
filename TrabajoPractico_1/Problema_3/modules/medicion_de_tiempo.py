@@ -10,7 +10,8 @@ def medicion_de_tiempo (func_ordenamiento):
     lista_de_tiempos = [] # Genero lista vacía para guardar los tiempos de ejecuación obtenidos
                      
     # Genera listas de distintos tamaños: desde 10 hasta 1000, avanzando de 50 en 50.
-    for i in range (10, 1050, 50):  
+    #for i in range (10, 1050, 50):  
+    for i in range (10, 1050, 5):  #Para probar la gráfica sin el ordenamiento burbuja
         lista = lista_aleatoria(i) # Crea una lista de tamaño i con números aleatorios de 5 dígitos
         inicio = time.perf_counter() # Me da el valor inicial de tiempo
         func_ordenamiento(lista) # Ejecuta el algoritmo de ordenamiento sobre la lista
