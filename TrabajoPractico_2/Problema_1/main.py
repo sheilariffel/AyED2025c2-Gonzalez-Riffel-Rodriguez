@@ -3,7 +3,7 @@
 #ESTO Y EL MODULO PACIENTE ES DE TP2
 """
 Sala de emergencias
-"""
+
 
 
 import time
@@ -69,3 +69,23 @@ print(miMonticulo.eliminarMin())
 print(miMonticulo.eliminarMin())
 
 print(miMonticulo.eliminarMin())
+"""
+
+# main.py
+from modulos.cola_prioridad import ColaDePrioridad
+
+def main():
+    cola = ColaDePrioridad()
+
+    # Insertamos pacientes: (prioridad, nombre)
+    cola.insertar(3, "Paciente A - Riesgo bajo")
+    cola.insertar(1, "Paciente B - Crítico")
+    cola.insertar(2, "Paciente C - Moderado")
+
+    print("Atendiendo pacientes según prioridad:\n")
+    while not cola.esta_vacia():
+        prioridad, paciente = cola.eliminar()
+        print(f"Atendiendo {paciente} (riesgo {prioridad})")
+
+if __name__ == "__main__":
+    main()

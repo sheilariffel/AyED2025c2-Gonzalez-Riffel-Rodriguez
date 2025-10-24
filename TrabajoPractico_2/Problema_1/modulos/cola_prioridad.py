@@ -1,3 +1,52 @@
+
+
+
+#ni idea que es lo anterior pero ahora agrego esto 
+# cola_prioridad.py
+from modulos.monticulobinario import MonticuloBinario
+
+class ColaDePrioridad:
+    def __init__(self):
+        # Internamente usa un montículo de mínima
+        self.monticulo = MonticuloBinario()
+
+    def insertar(self, prioridad, dato):
+        """
+        Inserta un elemento en la cola de prioridad.
+        prioridad: número (cuanto más chico, más urgente)
+        dato: cualquier tipo de dato (por ejemplo, un paciente)
+        """
+        # En el montículo se almacenan tuplas (prioridad, dato)
+        self.monticulo.insertar((prioridad, dato))
+
+    def eliminar(self):
+        """
+        Elimina y devuelve el elemento con mayor prioridad (la tupla completa).
+        """
+        return self.monticulo.eliminarMin()
+
+    def esta_vacia(self):
+        """
+        Devuelve True si no hay elementos en la cola.
+        """
+        return self.monticulo.tamanoActual == 0
+
+    def ver_minimo(self):
+        """
+        Devuelve (sin eliminar) el elemento con mayor prioridad (el mínimo).
+        """
+        if self.monticulo.tamanoActual >= 1:
+            return self.monticulo.listaMonticulo[1]
+        else:
+            return None
+
+
+
+
+
+
+
+"""
 #Agregado por mi, para poder realizar una cola de prioridad. Que permite insetar elmentos con prioridad asociada
 
 import heapq
@@ -32,35 +81,35 @@ _cola = PriorityQueue()
 #Luego, funciones que probablemente los tests esperan:
 
 def reiniciar():
-    """Reinicia la estructura (vaciar) para los tests."""
+    Reinicia la estructura (vaciar) para los tests.
     global _cola
     _cola = PriorityQueue()
 
 def inserta_paciente(paciente, riesgo):
-    """
+    
     Inserta un nuevo paciente con su nivel de riesgo.
     paciente: puede ser cualquier identificador (nombre, objeto, etc.)
     riesgo: entero 1, 2, 3 (1 = más urgencia)
-    """
+    
     _cola.push(riesgo, paciente)
 
 def atender_paciente():
-    """
+    
     Extrae y devuelve el paciente de mayor prioridad (más urgente) restante.
     Si no hay pacientes, retorna None (o lo que el test espera).
-    """
+    
     return _cola.pop()
 
 def proximo_paciente():
-    """
+    
     Devuelve el paciente que sería atendido a continuación sin extraerlo.
-    """
+    
     return _cola.peek()
 
 def pacientes_pendientes():
-    """
+    
     Devuelve la cantidad de pacientes que restan por atender (para tests de longitud).
-    """
+    
     return len(_cola)
 #....
 
@@ -87,3 +136,5 @@ cola.push(1, Paciente("Marta", 1))  # crítico, llegó después de Ana
 print("Atención de pacientes:")
 while len(cola) > 0:
     print("->", cola.pop())
+
+"""
