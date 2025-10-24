@@ -52,3 +52,20 @@ for i in range(n):
     print('-*-'*15)
     
     time.sleep(1)
+
+#Implementación del montículo binario
+from modulos.monticulobinario import MonticuloBinario
+
+miMonticulo = MonticuloBinario()
+miMonticulo.insertar(5)
+miMonticulo.insertar(7)
+miMonticulo.insertar(3)
+miMonticulo.insertar(11)
+
+print(miMonticulo.eliminarMin())
+
+print(miMonticulo.eliminarMin())
+
+print(miMonticulo.eliminarMin())
+
+print(miMonticulo.eliminarMin())
