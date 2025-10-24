@@ -1,6 +1,42 @@
 
+# cola_prioridad.py mejorada con el segundo criterio
+from modulos.monticulobinario import MonticuloBinario
+
+class ColaDePrioridad:
+    def __init__(self):
+        self.monticulo = MonticuloBinario()
+        self.contador_llegadas = 0  # contador para desempatar según orden de llegada
+
+    def insertar(self, prioridad, dato):
+        """
+        Inserta un elemento con prioridad y orden de llegada.
+        prioridad: cuanto más chico, más urgente
+        dato: cualquier tipo de dato (por ejemplo, un paciente)
+        """
+        self.contador_llegadas += 1
+        # La tupla incluye prioridad y orden para desempatar
+        self.monticulo.insertar((prioridad, self.contador_llegadas, dato))
+
+    def eliminar(self):
+        """
+        Elimina y devuelve el elemento con mayor prioridad (la tupla completa).
+        """
+        return self.monticulo.eliminarMin()
+
+    def esta_vacia(self):
+        return self.monticulo.tamanoActual == 0
+
+    def ver_minimo(self):
+        if self.monticulo.tamanoActual >= 1:
+            return self.monticulo.listaMonticulo[1]
+        else:
+            return None
 
 
+
+
+
+"""
 #ni idea que es lo anterior pero ahora agrego esto 
 # cola_prioridad.py
 from modulos.monticulobinario import MonticuloBinario
@@ -11,42 +47,34 @@ class ColaDePrioridad:
         self.monticulo = MonticuloBinario()
 
     def insertar(self, prioridad, dato):
-        """
-        Inserta un elemento en la cola de prioridad.
-        prioridad: número (cuanto más chico, más urgente)
-        dato: cualquier tipo de dato (por ejemplo, un paciente)
-        """
+        
+        #Inserta un elemento en la cola de prioridad.
+        #prioridad: número (cuanto más chico, más urgente)
+        #dato: cualquier tipo de dato (por ejemplo, un paciente)
+        
         # En el montículo se almacenan tuplas (prioridad, dato)
         self.monticulo.insertar((prioridad, dato))
 
     def eliminar(self):
-        """
-        Elimina y devuelve el elemento con mayor prioridad (la tupla completa).
-        """
+        
+        #Elimina y devuelve el elemento con mayor prioridad (la tupla completa).
+        
         return self.monticulo.eliminarMin()
 
     def esta_vacia(self):
-        """
-        Devuelve True si no hay elementos en la cola.
-        """
+        
+        #Devuelve True si no hay elementos en la cola.
+        
         return self.monticulo.tamanoActual == 0
 
     def ver_minimo(self):
-        """
-        Devuelve (sin eliminar) el elemento con mayor prioridad (el mínimo).
-        """
+        
+        #Devuelve (sin eliminar) el elemento con mayor prioridad (el mínimo).
+        
         if self.monticulo.tamanoActual >= 1:
             return self.monticulo.listaMonticulo[1]
         else:
             return None
-
-
-
-
-
-
-
-"""
 #Agregado por mi, para poder realizar una cola de prioridad. Que permite insetar elmentos con prioridad asociada
 
 import heapq

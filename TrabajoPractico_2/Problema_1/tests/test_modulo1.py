@@ -4,6 +4,7 @@
 
 import unittest
 from modulos.abb import ABB
+from modulos.abb import NodoArbol
 from modulos.cola_prioridad import atender_paciente
 from modulos.cola_prioridad import reiniciar
 from modulos.cola_prioridad import inserta_paciente

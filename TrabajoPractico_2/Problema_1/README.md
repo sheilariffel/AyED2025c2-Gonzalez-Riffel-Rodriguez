@@ -1,39 +1,21 @@
-# 🐍Nombre del proyecto (darle un nombre significativo) 
-
-Breve descripción del proyecto:
-
-Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite [describir funcionalidades principales].
+# 🐍MediCuidado
+Modificar el proyecto de Sala de Emergencias para que los pacientes se atiendan según su nivel de riesgo (prioridad médica) y no por orden de llegada. 
 
 ---
 ## 🏗Arquitectura General
 
 Explica brevemente cómo está organizado el código (funciones y/o clases)
+* La sección de módulos contiene 4 archivos 
+   - Archivo abb -> utilizado para realizar test 
+   - Archivo cola_prioridad -> utilizado para ordenar a los pacientes según el riesgo y el orden de llegada
+   - Archivo monticulobinario -> utilizado por la cola de prioridad para realizar funciones especificas, como insertar, eliminar, mover un elemento arriba o abajo. 
+   - Archivo paciente -> contiene información aleatoria de los pacientes que irán ingresando. Utiliza la clase paciente que contiene funciones que van guardando, nombre, apellido, número de riesgo y descripcion del riesgo. 
+* La sección doc contiene el informe del problema en formato PDF
+* La sección data contendría graficas, pero en este problema no se utilizaron 
+* La sección aplicaciones -> no se que iría acá
+* La sección de test que es para realizar pruebas del problema
+* Un main principal donde se encuentra la estructura de la sala de emergencia
 
-Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
-
-El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
-
----
-## 📑Dependencias
-
-1. **Python 3.x**
-2. **matplotlib** (`pip install matplotlib`)
-3. listar dependencias principales
-4. Dependencias listadas en requierements.txt
-
----
-## 🚀Cómo Ejecutar el Proyecto
-1. **Clonar o descargar** el repositorio.
-
-2. **Crear y activar** un entorno virtual.
-
-3. **Instalar las dependencias**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-   El archivo `requirements.txt` se encuentran en la carpeta [deps](./deps) del proyecto.
-
----
 ## 🙎‍♀️🙎‍♂️Autores
 
 - Gonzalez Maria Jimena
@@ -41,16 +23,13 @@ El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 - Rodriguez Maite
 
 ---
+# Consideraciones que estoy teniendo del trabajo
 
-> **Consejo**: Mantén el README **actualizado** conforme evoluciona el proyecto, y elimina (o añade) secciones según necesites. Esta plantilla es sólo un punto de partida general.
+1 - Descargar simulación de la sala de emergencia y probarla
+2 - Implementar un montículo de mínima
+3 - Implementar cola de prioridad que ocupa el montículo de mínima
+4 - Integrar la cola de prioridad en la sala de emergencia propuesta por la cátedra
+5 - Ajustar cola de prioridad para cumplir la consigna de igual orden de criticidad
 
----
-#Consideraciones que estoy teniendo del trabajo
-
-Probar la simulación de la sala de emergencias
-Implementar un montículo de mínimos (y probarlo)
-Implementar una Cola de Prioridad (con un montículo de mínimos y probarla)
-Integrar sala de emergencias con la Cola de Prioridad
-Ajustar para cumplir la consigna de igual orden de criticidad
 
 
