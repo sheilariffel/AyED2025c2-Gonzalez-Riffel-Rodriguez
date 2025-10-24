@@ -17,6 +17,12 @@ class MonticuloBinario:
         while i // 2 > 0:
             # Si el valor actual es menor que su padre,
             # significa que está "fuera de lugar" (violando la propiedad del montículo)
+            
+            """
+            Acá es donde mi montículo primero recibe la prioridad dle paciente. Una vez que campara ese valor
+            pasa al orden de llegada y luego a los datos del paciente. Es por eso que pasa primero el de riesgo menor 
+            que seria el 1. Siempre me devuelve la raiz
+            """
             if self.listaMonticulo[i] < self.listaMonticulo[i // 2]:
                 # Intercambia los valores (sube el valor más chico)
                 tmp = self.listaMonticulo[i // 2]
