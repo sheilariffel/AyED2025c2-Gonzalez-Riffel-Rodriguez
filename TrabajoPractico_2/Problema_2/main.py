@@ -1,51 +1,46 @@
-# ===========================
-#  MAIN.PY – Prueba completa usando muestras.txt
-# ===========================
+#PROGRAMA PRINCIPAL
 
-from modules.temperaturas import Temperaturas_DB
+from modules.temperaturas import Temperaturas_DB 
 
-def main():
-    # Crear base de datos
-    db = Temperaturas_DB()
+db = Temperaturas_DB()
 
-    # 1️⃣ Cargar datos desde el archivo
-    ruta_archivo = "data/muestras.txt"
-    db.cargar_desde_archivo(ruta_archivo)
-    print(f"Muestras cargadas desde {ruta_archivo}: {db.cantidad_muestras()}")
+# Ruta del archivo de muestras
+archivo_muestras = "data/muestras.txt"
 
-    # 2️⃣ Consultar una temperatura existente
-    # Tomamos la primera fecha del archivo (primer registro en orden)
-    todas_las_temp = db.devolver_temperaturas("01/01/2000", "31/12/2100")
-    if todas_las_temp:
-        fecha_consulta = todas_las_temp[0].split(":")[0]  # extraer fecha del string
-        temp = db.devolver_temperatura(fecha_consulta)
-        print(f"\nTemperatura registrada el {fecha_consulta}: {temp} ºC")
-    else:
-        print("\nNo hay registros en la base de datos.")
+# Cargar las muestras desde el archivo
+with open(archivo_muestras, "r", encoding="utf-8") as f:
+    for linea in f:
+        linea = linea.strip()
+        if not linea:
+            continue  # ignora líneas vacías
+        try:
+            fecha, temp = linea.split(";")
+            temp = float(temp)
+            db.guardar_temperatura(temp, fecha)
+        except ValueError:
+            print(f"⚠️ Línea con formato inválido: {linea}")
 
-    # 3️⃣ Borrar una temperatura (ejemplo)
-    if todas_las_temp:
-        fecha_borrar = todas_las_temp[1].split(":")[0] if len(todas_las_temp) > 1 else fecha_consulta
-        db.borrar_temperatura(fecha_borrar)
-        print(f"\nSe borró la temperatura del {fecha_borrar}")
-        print(f"Cantidad de muestras actual: {db.cantidad_muestras()}")
+# Mostrar cantidad de muestras
+print("Cantidad de muestras:", db.cantidad_muestras())
 
-    # 4️⃣ Listar todas las temperaturas
-    print("\nListado completo de temperaturas:")
-    for entrada in db.devolver_temperaturas("01/01/2000", "31/12/2100"):
-        print(entrada)
+# Devolver temperatura de una fecha específica
+fecha_consulta = "09/04/2025"
+print(f"Temperatura en {fecha_consulta}:", db.devolver_temperatura(fecha_consulta))
 
-    # 5️⃣ Máxima y mínima temperatura en un rango
-    fecha_inicio = "01/01/2023"
-    fecha_fin = "31/12/2023"
-    min_temp = db.min_temp_rango(fecha_inicio, fecha_fin)
-    max_temp = db.max_temp_rango(fecha_inicio, fecha_fin)
-    print(f"\nTemperatura mínima entre {fecha_inicio} y {fecha_fin}: {min_temp} ºC")
-    print(f"Temperatura máxima entre {fecha_inicio} y {fecha_fin}: {max_temp} ºC")
+# Temperatura máxima y mínima en un rango
+fecha1 = "01/01/2025"
+fecha2 = "30/04/2025"
+print(f"Temperatura máxima entre {fecha1} y {fecha2}:", db.max_temp_rango(fecha1, fecha2))
+print(f"Temperatura mínima entre {fecha1} y {fecha2}:", db.min_temp_rango(fecha1, fecha2))
+print(f"Temperaturas extremas entre {fecha1} y {fecha2}:", db.temp_extremos_rango(fecha1, fecha2))
 
-    # 6️⃣ Mínimo y máximo combinados
-    min_ext, max_ext = db.temp_extremos_rango(fecha_inicio, fecha_fin)
-    print(f"\nExtremos del rango: mínimo = {min_ext} ºC, máximo = {max_ext} ºC")
+# Devolver todas las temperaturas en un rango
+print(f"Listado de temperaturas entre {fecha1} y {fecha2}:")
+for registro in db.devolver_temperaturas(fecha1, fecha2):
+    print(registro)
 
-if __name__ == "__main__":
-    main()
+# Borrar una temperatura y verificar
+fecha_borrar = "03/02/2025"
+print(f"Borrando temperatura de {fecha_borrar}...")
+db.borrar_temperatura(fecha_borrar)
+print("Cantidad de muestras después de borrar:", db.cantidad_muestras())
