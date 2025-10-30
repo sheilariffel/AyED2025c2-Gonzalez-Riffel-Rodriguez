@@ -1,0 +1,76 @@
+from modulos.cola_prioridad import ColaDePrioridad
+
+def leer_aldeas(archivo):
+    grafo = {}
+    with open(archivo, "r", encoding="utf-8") as f:
+        for linea in f:
+            linea = linea.strip()
+            if not linea or linea.count(",") < 2:
+                continue
+            origen, destino, dist = [x.strip() for x in linea.split(",")]
+            dist = int(dist)
+            grafo.setdefault(origen, []).append((destino, dist))
+            grafo.setdefault(destino, []).append((origen, dist))
+    return grafo
+
+
+def prim(grafo, inicio):
+    visitados = set([inicio])
+    pq = ColaDePrioridad()  # usamos tu clase personalizada
+    resultado = []
+    total = 0
+
+    # Insertar las aristas iniciales desde la aldea de inicio
+    for destino, dist in grafo[inicio]:
+        pq.insertar(dist, (inicio, destino))
+
+    # Mientras haya aristas disponibles
+    while not pq.esta_vacia():
+        dist, _, (origen, destino) = pq.eliminar()
+        if destino not in visitados:
+            visitados.add(destino)
+            resultado.append((origen, destino, dist))
+            total += dist
+            for vecino, d in grafo[destino]:
+                if vecino not in visitados:
+                    pq.insertar(d, (destino, vecino))
+
+    return resultado, total
+
+
+def construir_red(resultado):
+    recibir = {}
+    enviar = {}
+
+    for origen, destino, _ in resultado:
+        recibir[destino] = origen
+        enviar.setdefault(origen, []).append(destino)
+        enviar.setdefault(destino, [])
+    return recibir, enviar
+
+
+def main():
+    grafo = leer_aldeas(r"C:\Users\PC\Desktop\Facultad 2025\Algoritmos\Repo\AyED2025c2-Gonzalez-Riffel-Rodriguez\TrabajoPractico_2\Problema_3\data\aldeas.txt")
+    resultado, total = prim(grafo, "Peligros")
+    aldeas = sorted(grafo.keys())
+    recibir, enviar = construir_red(resultado)
+
+    print(" Lista de aldeas (orden alfabético)")
+    for aldea in aldeas:
+        print(aldea)
+
+    print("\nComunicación más eficiente")
+    for aldea in aldeas:
+        if aldea == "Peligros":
+            print(f"{aldea}: no recibe, envía a {', '.join(enviar[aldea])}")
+        else:
+            if enviar[aldea]:
+                print(f"{aldea}: recibe de {recibir[aldea]}, envía a {', '.join(enviar[aldea])}")
+            else:
+                print(f"{aldea}: recibe de {recibir[aldea]}, envía a nadie")
+
+    print(f"\nDistancia total recorrida: {total} leguas")
+
+
+if __name__ == "__main__":
+    main()
