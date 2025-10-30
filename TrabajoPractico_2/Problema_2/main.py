@@ -1,0 +1,46 @@
+#PROGRAMA PRINCIPAL
+
+from modules.temperaturas import Temperaturas_DB 
+
+db = Temperaturas_DB()
+
+# Ruta del archivo de muestras
+archivo_muestras = "data/muestras.txt"
+
+# Cargar las muestras desde el archivo
+with open(archivo_muestras, "r", encoding="utf-8") as f:
+    for linea in f:
+        linea = linea.strip()
+        if not linea:
+            continue  # ignora líneas vacías
+        try:
+            fecha, temp = linea.split(";")
+            temp = float(temp)
+            db.guardar_temperatura(temp, fecha)
+        except ValueError:
+            print(f"⚠️ Línea con formato inválido: {linea}")
+
+# Mostrar cantidad de muestras
+print("Cantidad de muestras:", db.cantidad_muestras())
+
+# Devolver temperatura de una fecha específica
+fecha_consulta = "09/04/2025"
+print(f"Temperatura en {fecha_consulta}:", db.devolver_temperatura(fecha_consulta))
+
+# Temperatura máxima y mínima en un rango
+fecha1 = "01/01/2025"
+fecha2 = "30/04/2025"
+print(f"Temperatura máxima entre {fecha1} y {fecha2}:", db.max_temp_rango(fecha1, fecha2))
+print(f"Temperatura mínima entre {fecha1} y {fecha2}:", db.min_temp_rango(fecha1, fecha2))
+print(f"Temperaturas extremas entre {fecha1} y {fecha2}:", db.temp_extremos_rango(fecha1, fecha2))
+
+# Devolver todas las temperaturas en un rango
+print(f"Listado de temperaturas entre {fecha1} y {fecha2}:")
+for registro in db.devolver_temperaturas(fecha1, fecha2):
+    print(registro)
+
+# Borrar una temperatura y verificar
+fecha_borrar = "03/02/2025"
+print(f"Borrando temperatura de {fecha_borrar}...")
+db.borrar_temperatura(fecha_borrar)
+print("Cantidad de muestras después de borrar:", db.cantidad_muestras())

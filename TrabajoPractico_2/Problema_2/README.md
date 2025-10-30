@@ -1,8 +1,7 @@
-# 🐍Nombre del proyecto (darle un nombre significativo) 
+# 🐍Temperatuas_DB 
 
-Breve descripción del proyecto:
-
-Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite [describir funcionalidades principales].
+Este proyecto implementa un sistema para almacenar y consultar mediciones de temperatura asociadas a fechas específicas.
+Las temperaturas se gestionan mediante una clase Temperaturas_DB que utiliza estructuras de datos, como árbol AVL, para permitir operaciones rápidas de búsqueda, inserción y eliminación.
 
 ---
 ## 🏗Arquitectura General
@@ -14,32 +13,10 @@ Las gráficas de los resultados están disponible en la carpeta [data](./data) d
 El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 
 ---
-## 📑Dependencias
-
-1. **Python 3.x**
-2. **matplotlib** (`pip install matplotlib`)
-3. listar dependencias principales
-4. Dependencias listadas en requierements.txt
-
----
-## 🚀Cómo Ejecutar el Proyecto
-1. **Clonar o descargar** el repositorio.
-
-2. **Crear y activar** un entorno virtual.
-
-3. **Instalar las dependencias**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-   El archivo `requirements.txt` se encuentran en la carpeta [deps](./deps) del proyecto.
-
----
-## 🙎‍♀️🙎‍♂️Autores
+## 🙎‍♀️🙎‍♀️🙎‍♀️Autoras
 
 - Gonzalez María Jimena
 - Riffel Sheila Gabriela
 - Rodriguez Maite
 
 ---
-
-> **Consejo**: Mantén el README **actualizado** conforme evoluciona el proyecto, y elimina (o añade) secciones según necesites. Esta plantilla es sólo un punto de partida general.
