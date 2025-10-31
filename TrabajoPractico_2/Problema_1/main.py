@@ -12,22 +12,43 @@ from modulos.cola_prioridad import ColaDePrioridad
 
 n = 20  # cantidad de ciclos de simulación
 
+# cola_de_espera = list()
+"""
+Modificamos la cola de espera para que pase de ser una lista, a una cola de prioridad que me permita
+atender los pacientes según su riesgo de salud 
+"""
+
+# Se crea la cola de prioridad (la "sala de espera")
 cola_de_espera = ColaDePrioridad()
 
+# Ciclo principal de la simulación
 for i in range(n):
+    # Mostrar fecha y hora del ciclo
     ahora = datetime.datetime.now()
     fecha_y_hora = ahora.strftime('%d/%m/%Y %H:%M:%S')
     print('-*-' * 15)
     print('\n', fecha_y_hora, '\n')
 
+
+    # paciente = pac.Paciente()
+    # cola_de_espera.append(paciente)  -> Esto solo agrega el paciente al final de la lista, sin importar su riesgo.
+    """Modificamos para que tome la cola de prioridad"""
+
+    # Crear un paciente nuevo con datos aleatorios
     paciente = Paciente()
     print(f"Llega {paciente}")
 
-    # Insertar paciente con riesgo (prioridad)
+    """Esto no solo inserta al paciente. Lo inserta en el lugar correcto según su prioridad (nivel de riesgo)."""
+    # Insertar al paciente en la cola según su riesgo (prioridad)
     cola_de_espera.insertar(paciente.get_riesgo(), paciente)
 
-    # 50% de probabilidad de atender un paciente
+    # Con 50% de probabilidad, se atiende un paciente
     if random.random() < 0.5 and not cola_de_espera.esta_vacia():
+
+        """Modificamos porque sino atendia siempre el primero que llegaba aunque sea leve y haya llegado alguien más grave"""
+        #paciente_atendido = cola_de_espera.pop(0)
+
+        # Se saca el paciente con mayor prioridad (menor número de riesgo)
         prioridad, orden, paciente_atendido = cola_de_espera.eliminar()
         print('*' * 40)
         print(f"Se atiende a: {paciente_atendido}")
@@ -39,61 +60,12 @@ for i in range(n):
     print("Pacientes que faltan atenderse:", cola_de_espera.monticulo.tamanoActual)
     Ordenar = cola_de_espera.monticulo.tamanoActual
 
-    # Mostrar los pacientes que están esperando
+    # Mostrar la cola de espera (los pacientes aún sin atender)
     for prioridad, orden, paciente in cola_de_espera.monticulo.listaMonticulo[1:]:
         print(f"\t{paciente} (orden {orden})")
 
     print('-*-' * 15)
+    # Pausa de 1 segundo entre ciclos
     time.sleep(1)
 
 
-"""Sala de emergencias
-
-
-import time
-import datetime
-import modulos.paciente as pac
-import random
-
-n = 20  # cantidad de ciclos de simulación
-
-cola_de_espera = list()
-cola_de_espera = ColaDePrioridad() #Primera modificación -> cambié la lista por cola de prioridad
-
-# Ciclo que gestiona la simulación
-for i in range(n):
-    # Fecha y hora de entrada de un paciente
-    ahora = datetime.datetime.now()
-    fecha_y_hora = ahora.strftime('%d/%m/%Y %H:%M:%S')
-    print('-*-'*15)
-    print('\n', fecha_y_hora, '\n')
-
-    # Se crea un paciente un paciente por segundo
-    # La criticidad del paciente es aleatoria
-    paciente = pac.Paciente()
-    cola_de_espera.append(paciente)
-
-    # Atención de paciente en este ciclo: en el 50% de los casos
-    if random.random() < 0.5:
-        # se atiende paciente que se encuentra al frente de la cola
-        paciente_atendido = cola_de_espera.pop(0)
-        print('*'*40)
-        print('Se atiende el paciente:', paciente_atendido)
-        print('*'*40)
-    else:
-        # se continúa atendiendo paciente de ciclo anterior
-        pass
-    
-    print()
-
-    # Se muestran los pacientes restantes en la cola de espera
-    print('Pacientes que faltan atenderse:', len(cola_de_espera))
-    for paciente in cola_de_espera:
-        print('\t', paciente)
-    
-    print()
-    print('-*-'*15)
-    
-    time.sleep(1)
-
-"""
