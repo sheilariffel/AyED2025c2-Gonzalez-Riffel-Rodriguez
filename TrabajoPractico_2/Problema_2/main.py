@@ -7,18 +7,7 @@ db = Temperaturas_DB()
 # Ruta del archivo de muestras
 archivo_muestras = "data/muestras.txt"
 
-# Cargar las muestras desde el archivo
-with open(archivo_muestras, "r", encoding="utf-8") as f:
-    for linea in f:
-        linea = linea.strip()
-        if not linea:
-            continue  # ignora líneas vacías
-        try:
-            fecha, temp = linea.split(";")
-            temp = float(temp)
-            db.guardar_temperatura(temp, fecha)
-        except ValueError:
-            print(f"⚠️ Línea con formato inválido: {linea}")
+db.cargar_desde_archivo(archivo_muestras)
 
 # Mostrar cantidad de muestras
 print("Cantidad de muestras:", db.cantidad_muestras())
