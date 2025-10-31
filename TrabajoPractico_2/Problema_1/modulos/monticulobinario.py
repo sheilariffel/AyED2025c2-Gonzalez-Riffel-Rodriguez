@@ -16,14 +16,12 @@ class MonticuloBinario:
         # Mientras el nodo tenga un padre (i // 2 > 0)
         while i // 2 > 0:
             # Si el valor actual es menor que su padre,
-            # significa que está "fuera de lugar" (violando la propiedad del montículo)
+            # significa que está "fuera de lugar" (no cumple con la propiedade del montículo de mínima)
             
-            """
-            Acá es donde mi montículo primero recibe la prioridad dle paciente. Una vez que campara ese valor
-            pasa al orden de llegada y luego a los datos del paciente. Es por eso que pasa primero el de riesgo menor 
-            que seria el 1. Siempre me devuelve la raiz
-            """
-            if self.listaMonticulo[i] < self.listaMonticulo[i // 2]:
+            """ Contexto de nuestro problema: acá es donde mi montículo primero recibe la prioridad del paciente. Una vez que campara ese valor
+        pasa al orden de llegada y luego a los datos del paciente. Es por eso que pasa primero el de riesgo menor que seria el 1. Siempre me devuelve la raiz
+        """
+            if self.listaMonticulo[i] < self.listaMonticulo[i // 2]: #compara la tupla (prioridad, contador_llegada, paciente)
                 # Intercambia los valores (sube el valor más chico)
                 tmp = self.listaMonticulo[i // 2]
                 self.listaMonticulo[i // 2] = self.listaMonticulo[i]

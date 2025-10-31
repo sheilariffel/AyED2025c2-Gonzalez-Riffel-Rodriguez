@@ -19,31 +19,28 @@ class ArbolAVL:
     # Obtener altura
     def _altura(self, nodo):
         return nodo.altura if nodo else 0
+    
+    def _actualizar_altura(self, nodo):
+        nodo.altura = 1 + max(self._altura(nodo.izq), self._altura(nodo.der))
 
     # Obtener balance
     def _balance(self, nodo):
-        if not nodo:
-            return 0
-        return self._altura(nodo.izq) - self._altura(nodo.der)
+        return self._altura(nodo.izq) - self._altura(nodo.der) if nodo else 0
 
     # Rotación derecha
     def _rotar_derecha(self, y):
-        x = y.izq
-        T2 = x.der
-        x.der = y
-        y.izq = T2
-        y.altura = 1 + max(self._altura(y.izq), self._altura(y.der))
-        x.altura = 1 + max(self._altura(x.izq), self._altura(x.der))
+        x, T2 = y.izq, y.izq.der
+        x.der, y.izq = y, T2
+        self._actualizar_altura(y)
+        self._actualizar_altura(x)
         return x
 
     # Rotación izquierda
     def _rotar_izquierda(self, x):
-        y = x.der
-        T2 = y.izq
-        y.izq = x
-        x.der = T2
-        x.altura = 1 + max(self._altura(x.izq), self._altura(x.der))
-        y.altura = 1 + max(self._altura(y.izq), self._altura(y.der))
+        y, T2 = x.der, x.der.izq
+        y.izq, x.der = x, T2
+        self._actualizar_altura(x)
+        self._actualizar_altura(y)
         return y
 
     # Insertar nodo

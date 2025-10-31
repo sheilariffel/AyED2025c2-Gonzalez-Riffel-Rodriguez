@@ -1,37 +1,16 @@
-# 🐍Nombre del proyecto (darle un nombre significativo) 
+# 🐍Palomas mensajeras
 
 Breve descripción del proyecto:
-
-Ejemplo: “Este es un script en el que se comparan algoritmos de ordenamiento. Permite [describir funcionalidades principales].
-
+El proyecto trata sobre  encontrar la forma más eficiente de llevar un mensaje desde una aldea a todas las demás, donde cada aldea reciba solamente una vez la noticia. Cada aldea, al recibir la noticia, puede replicarla y enviarla a tantas aldeas vecinas como quiera.
 ---
 ## 🏗Arquitectura General
 
-Explica brevemente cómo está organizado el código (funciones y/o clases)
-
-Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
+El codigo primero lee el archivo con las aldeas y sus distancias, armando un mapa de todas las conexiones posibles.
+Después usa un método para encontrar la forma más corta de unir todas las aldeas. Empieza desde "Peligros" y va agregando los caminos más cercanos, evitando dar vueltas innecesarias.
+Luego organiza el resultado para saber claramente: cada aldea recibe mensajes de quién y a quiénes debe reenviarlos.
+Finalmente muestra toda la información: el listado de aldeas, cómo se comunican entre sí y cuánta distancia se recorre en total.
 
 El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
-
----
-## 📑Dependencias
-
-1. **Python 3.x**
-2. **matplotlib** (`pip install matplotlib`)
-3. listar dependencias principales
-4. Dependencias listadas en requierements.txt
-
----
-## 🚀Cómo Ejecutar el Proyecto
-1. **Clonar o descargar** el repositorio.
-
-2. **Crear y activar** un entorno virtual.
-
-3. **Instalar las dependencias**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-   El archivo `requirements.txt` se encuentran en la carpeta [deps](./deps) del proyecto.
 
 ---
 ## 🙎‍♀️🙎‍♂️Autores
