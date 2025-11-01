@@ -6,9 +6,15 @@ Las temperaturas se gestionan mediante una clase Temperaturas_DB que utiliza est
 ---
 ## 🏗Arquitectura General
 
-Explica brevemente cómo está organizado el código (funciones y/o clases)
+El proyecto tiene dos módulos y un programa principal:
 
-Las gráficas de los resultados están disponible en la carpeta [data](./data) del proyecto.
+- avl.py: define NodoAVL y ArbolAVL para manejar un árbol AVL balanceado.
+  - NodoAVL representa un nodo del árbol con clave (fecha), valor (temperatura), referencias a hijos y altura.
+  - ArbolAVL maneja los nodos, permitiendo insertar, buscar, eliminar y recorrer el árbol, manteniéndolo balanceado automáticamente.
+- temperaturas.py: Contiene la clase Temperaturas_DB, que usa internamente ArbolAVL. Permite guardar, consultar, borrar y listar temperaturas. Incluye métodos para calcular máximos y mínimos en un rango de fechas. Implementa la carga de datos desde archivo (muestras.txt).
+- Programa principal (main.py): crea la base de datos, carga las mediciones y muestra resultados por consola.
+
+Las archivo muestras.txt está disponible en la carpeta [data](./data) del proyecto.
 
 El informe completo está disponible en la carpeta [docs](./docs) del proyecto.
 
