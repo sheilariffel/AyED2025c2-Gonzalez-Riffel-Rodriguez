@@ -50,7 +50,7 @@ def construir_red(resultado):
 
 
 def main():
-    grafo = leer_aldeas(r"C:\Users\PC\Desktop\Facultad 2025\Algoritmos\Repo\AyED2025c2-Gonzalez-Riffel-Rodriguez\TrabajoPractico_2\Problema_3\data\aldeas.txt")
+    grafo = leer_aldeas("data/aldeas.txt")
     resultado, total = prim(grafo, "Peligros")
     aldeas = sorted(grafo.keys())
     recibir, enviar = construir_red(resultado)
